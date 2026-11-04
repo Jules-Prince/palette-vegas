@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#100b20">
+    <meta name="description" content="Ta roulette à sandwich, avec les modes Safe et Gourmand cumulables : un pain, de la salade ou non, trois ou quatre ingrédients et une sauce.">
+    <title>Sandwich Vegas — Le jackpot du déjeuner</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <section class="machine" aria-label="Roulette à sandwich">
+        <svg class="marquee-track" aria-hidden="true"><rect id="marquee-path" x="10" y="10" rx="14" /></svg>
+        <div class="marquee-lights" id="marquee-lights" aria-hidden="true"></div>
+        <div class="machine-inner">
+          <h1 class="machine-heading"><button class="menu-button" id="menu-button" type="button" aria-label="Ouvrir les exclusions et les commandes" aria-haspopup="dialog" aria-controls="settings-dialog"><span aria-hidden="true">☰</span><span class="ban-count" id="ban-count" hidden>0</span></button><span>SANDWICH <em>VEGAS</em></span><span aria-hidden="true">✦</span></h1>
+          <div class="reels" aria-hidden="true">
+            <div class="reel-group"><span class="reel-label">LE PAIN</span><div class="reel-window"><div class="reel-strip" id="bread-reel"><div class="reel-item"><span class="reel-icon">🍞</span><span class="reel-name">Le suspense…</span></div></div></div></div>
+            <div class="reel-group"><span class="reel-label">LA SALADE</span><div class="reel-window"><div class="reel-strip" id="salad-reel"><div class="reel-item"><span class="reel-icon">🥬</span><span class="reel-name">Avec ou sans ?</span></div></div></div></div>
+            <div class="reel-group"><span class="reel-label">INGRÉDIENT 01</span><div class="reel-window"><div class="reel-strip" id="ingredient-1-reel"><div class="reel-item"><span class="reel-icon placeholder">?</span><span class="reel-name">Surprise</span></div></div></div></div>
+            <div class="reel-group"><span class="reel-label">INGRÉDIENT 02</span><div class="reel-window"><div class="reel-strip" id="ingredient-2-reel"><div class="reel-item"><span class="reel-icon placeholder">?</span><span class="reel-name">Surprise</span></div></div></div></div>
+            <div class="reel-group"><span class="reel-label">INGRÉDIENT 03</span><div class="reel-window"><div class="reel-strip" id="ingredient-3-reel"><div class="reel-item"><span class="reel-icon placeholder">?</span><span class="reel-name">Surprise</span></div></div></div></div>
+            <div class="reel-group" id="extra-ingredient-group" hidden><span class="reel-label">INGRÉDIENT 04</span><div class="reel-window"><div class="reel-strip" id="ingredient-4-reel"><div class="reel-item"><span class="reel-icon placeholder">?</span><span class="reel-name">Le bonus gourmand</span></div></div></div></div>
+            <div class="reel-group" id="sauce-group"><span class="reel-label">LA SAUCE</span><div class="reel-window"><div class="reel-strip" id="sauce-reel"><div class="reel-item"><span class="reel-icon">🥣</span><span class="reel-name">La touche finale</span></div></div></div></div>
+          </div>
+          <div class="machine-status" id="machine-status" role="status" aria-atomic="true">6 étapes. À toi le jackpot !</div>
+        </div>
+      </section>
+      <div class="controls">
+        <fieldset class="modes" aria-label="Modes du tirage, cumulables">
+          <label class="mode"><input id="safe-mode" type="checkbox"><span class="mode-copy"><strong>Safe · 75+ aura</strong><small>Légume · viande/œuf · fromage</small></span><span class="toggle" aria-hidden="true"></span></label>
+          <label class="mode"><input id="gourmand-mode" type="checkbox"><span class="mode-copy"><strong>Gourmand</strong><small>Un 4ᵉ ingrédient libre</small></span><span class="toggle" aria-hidden="true"></span></label>
+        </fieldset>
+        <button class="spin-button" id="spin-button" type="button"><span id="button-icon" aria-hidden="true">✦</span><span id="button-label">Lancer la roulette</span><span aria-hidden="true">↗</span></button>
+      </div>
+    </main>
+    <dialog class="settings-dialog" id="settings-dialog" aria-labelledby="settings-title" aria-describedby="settings-description">
+      <div class="settings-heading"><h2 id="settings-title">À toi de choisir</h2><button class="close-menu" id="close-menu" type="button" aria-label="Fermer le menu">×</button></div>
+      <p class="settings-description" id="settings-description">Bannis jusqu’à 2 ingrédients ou sauces. <strong id="exclusion-count" role="status">0 / 2 exclus</strong></p>
+      <div class="ban-columns" id="ban-columns"></div>
+      <div class="settings-actions"><button class="motion-button" id="motion-button" type="button">Activer « secouer »</button><button class="reset-bans" id="reset-bans" type="button">Tout autoriser</button></div>
+      <p class="motion-status" id="motion-status" role="status">Espace pour lancer · Secouer sur les téléphones compatibles.</p>
+    </dialog>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+  </body>
+</html>
